@@ -39,6 +39,8 @@ class Controller(QObject):
                 self.gui.central_widget.players[x[1]].set_bank(self.m.get_players()[x[1]][0])
                 self.gui.central_widget.players[x[1]].set_bank_add(self.m.get_players()[x[1]][1])
 
+        self.save()
+
     @Slot(str)
     def player_trade(self, btn_value):
         if btn_value in ["1", "5", "10", "20", "50", "100", "500", "1000"]:
@@ -58,4 +60,15 @@ class Controller(QObject):
                 self.gui.central_widget.players[p2_nb].set_bank(self.m.get_players()[p2_nb][0])
                 self.gui.central_widget.set_trade_value(0)
 
+        self.save()
 
+    def save(self):
+        f = open("backup.txt", 'w')
+
+        data = ""
+
+        for p in self.gui.central_widget.players:
+            data += f"{p.player_name} - {p.get_bank()}\n"
+
+        f.write(data)
+        f.close()

@@ -112,6 +112,7 @@ class Player(QWidget):
 
         self.__bank = start_money
         self.__bank_add = 0
+        self.player_name = player_name
 
         # Widgets
 
