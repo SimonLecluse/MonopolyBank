@@ -94,6 +94,11 @@ class Buttons(QPushButton):
         self.setFixedWidth(dim[0])
         self.setFixedHeight(dim[1])
 
+        if name == "ok":
+            self.setStyleSheet("background: #bbffbb;")
+        elif name == "clear":
+            self.setStyleSheet("background: #ffbbbb;")
+
         self.pos = pos
         self.name = str(name)
         self.infos = (name, player[1])
